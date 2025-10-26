@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Password_Manager.View.CreateDbView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Password_Manager.View"
+             xmlns:vm="clr-namespace:Password_Manager.ViewModel"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <UserControl.DataContext>
+        <vm:CreateDbViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+    </UserControl.Resources>
+
+
+    <Grid Background="#F0F0F0">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
+
+           
+            <TextBlock 
+            Text="Create a new vault: Enter a name and a password." 
+            Style="{StaticResource ModernTextBlockStyle}" 
+            Margin="0,0,0,10"/>
+
+            
+            <TextBlock 
+            Text="Vault Name:" 
+            Style="{StaticResource ModernTextBlockStyle}" 
+            Margin="0,10,0,5"/>
+
+            
+            <TextBox 
+            x:Name="VaultNameInput" 
+            Margin="0,0,0,10" 
+            FontSize="14"
+            Padding="10"
+            Background="White"
+            BorderBrush="#CCC"
+            BorderThickness="1"
+            />
+
+            
+            <TextBlock 
+            Text="Vault Password:" 
+            Style="{StaticResource ModernTextBlockStyle}" 
+            Margin="0,10,0,5"
+               />
+
+            
+            <PasswordBox 
+            x:Name="VaultPasswordInput" 
+            Style="{StaticResource ModernPasswordBoxStyle}" 
+            Margin="0,0,0,10"
+            PasswordChanged="MyPasswordBox_PasswordChanged"
+               />
+            
+            
+            
+
+            <TextBlock x:Name="ShowPasswordStrenght"  Text="" Margin="0,10,0,5"  Style="{StaticResource ModernTextBlockStyle}" />
+
+
+            <Button x:Name="CreateVaultButton" 
+            Content="Create New Vault" 
+            Style="{StaticResource ModernButtonStyle}"
+            Click="CreateVaultButton_Click"
+            
+            Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+
+
+</UserControl>

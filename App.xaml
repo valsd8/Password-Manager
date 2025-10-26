@@ -1,0 +1,40 @@
+﻿<Application x:Class="Password_Manager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Password_Manager"
+             xmlns:vm="clr-namespace:Password_Manager.ViewModel"
+             xmlns:vw="clr-namespace:Password_Manager.View"
+             StartupUri="View/MainWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+            
+
+            <ResourceDictionary.MergedDictionaries>
+                
+               
+
+                <ResourceDictionary Source="Ressources/Style.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type vm:EnterPasswordViewModel}">
+                <vw:EnterPasswordView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:CreateDbViewModel}">
+                <vw:CreateDbView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:VaultAction}">
+                <vw:VaultAction/>
+            </DataTemplate>
+
+
+
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
