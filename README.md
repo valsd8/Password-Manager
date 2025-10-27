@@ -15,7 +15,7 @@ All of the data is written on a file called encrypted.bin in json serialized obj
 
 {"Name":"My passwords","IV":"iXUhN2Idla6vAyZ2aqngJQ==","Salt":"b7gHxTE5O0cEwyysJ9+sMPBrqNxqWGq+t9KdZkGGyQ8=","EncryptedData":"2svei9tV29wcx5lRzBJ+AKBnRu/QVLxrFSObm1Ek9AI="}
 
-![App GUI]( "Images/appGUI.png")
+![App GUI](Images/appGUI.png)
 
 # 
 
