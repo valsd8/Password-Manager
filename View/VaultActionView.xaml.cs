@@ -58,7 +58,7 @@ namespace PasswordManager.View
             );
         }
 
-
+        
 
         public void Add_entry_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -87,6 +87,8 @@ namespace PasswordManager.View
             NewPasswordBox.Password = "";
             OptionalComment.Text = "";
             vaultAction.addEntry(usernameEntry, password, comment, urlEntry);
+            DisplayData DisplayData = new DisplayData();
+            DisplayData.DisplayBreachedPassword(password, urlEntry);
         }
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {

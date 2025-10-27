@@ -72,8 +72,36 @@ namespace PasswordManager.View
             string currentPassword = passwordBox.Password;
             PasswordChecker PasswordChecker = new Model.PasswordChecker();
             string passwordStrength = PasswordChecker.checkPasswordStrength(currentPassword);
+
             if (passwordStrength == "password invalid")
                 ShowPasswordStrenght.Text = "";
+            else if (passwordStrength.StartsWith("Really Strong Password"))
+            {
+                VaultPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#04d484"));
+                ShowPasswordStrenght.Text = passwordStrength;
+            }
+            else if (passwordStrength.StartsWith("Strong Password"))
+            {
+                ShowPasswordStrenght.Text = passwordStrength;
+                VaultPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#87ed95"));
+            }
+            else if (passwordStrength.StartsWith("Average Password"))
+            {
+                ShowPasswordStrenght.Text = passwordStrength;
+                VaultPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#deeb54"));
+            }
+            else if (passwordStrength.StartsWith("Very Weak password"))
+            {
+                ShowPasswordStrenght.Text = passwordStrength;
+                VaultPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e61e1e"));
+
+            }
+            else if (passwordStrength.StartsWith("Weak Password"))
+            {
+                ShowPasswordStrenght.Text = passwordStrength;
+                VaultPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#eb8c54"));
+
+            }
             else
                 ShowPasswordStrenght.Text = passwordStrength;
 
