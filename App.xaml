@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Password_Manager"
-             xmlns:vm="clr-namespace:Password_Manager.ViewModel"
-             xmlns:vw="clr-namespace:Password_Manager.View"
+             xmlns:vm="clr-namespace:PasswordManager.ViewModel"
+             xmlns:vw="clr-namespace:PasswordManager.View"
              StartupUri="View/MainWindow.xaml">
 
     <Application.Resources>

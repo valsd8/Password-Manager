@@ -1,4 +1,4 @@
-﻿using Password_Manager.ViewModel;
+﻿using PasswordManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Password_Manager.View
+namespace PasswordManager.View
 {
     /// <summary>
     /// Logique d'interaction pour EnterPasswordView.xaml
@@ -34,10 +34,24 @@ namespace Password_Manager.View
             if (parentWindow != null)
             {
                 var VaultAction = new ViewModel.VaultAction();
-                parentWindow.Title = VaultAction.SetWindowsTitle();
+                string title = $"{VaultAction.SetWindowsTitle()} (locked)";
+                parentWindow.Title = title;
+                parentWindow.Icon = CreateColoredCircleIcon("#ebd834");
             }
         }
+        public DrawingImage CreateColoredCircleIcon(string hexColor)
+        {
+            var color = (Color)ColorConverter.ConvertFromString(hexColor);
 
-        
+            return new DrawingImage(
+                new GeometryDrawing(
+                    new SolidColorBrush(color),
+                    null,
+                    new EllipseGeometry(new Point(8, 8), 8, 8)
+                )
+            );
+        }
+
+
     }
 }

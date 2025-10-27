@@ -1,12 +1,12 @@
-﻿using Password_Manager.Model;
+﻿using PasswordManager.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Password_Manager;
+using PasswordManager;
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
     public class SharedDataServices
     {

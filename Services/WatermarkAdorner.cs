@@ -9,7 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-namespace Password_Manager.Services
+namespace PasswordManager.Services
 {
     internal class WatermarkAdorner : Adorner
     {

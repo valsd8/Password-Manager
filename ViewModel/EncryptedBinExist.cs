@@ -7,7 +7,7 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
     public class EncryptedBinExistViewModel : INotifyPropertyChanged
     {

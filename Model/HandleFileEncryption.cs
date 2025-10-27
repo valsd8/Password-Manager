@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Password_Manager.Model
+namespace PasswordManager.Model
 {
     class HandleFileEncryption
     {

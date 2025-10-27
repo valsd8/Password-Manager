@@ -1,5 +1,5 @@
-﻿using Password_Manager.Model;
-using Password_Manager.ViewModel;
+﻿using PasswordManager.Model;
+using PasswordManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static MaterialDesignThemes.Wpf.Theme;
 
-namespace Password_Manager.View
+namespace PasswordManager.View
 {
     /// <summary>
     /// Logique d'interaction pour CreateDbView.xaml
@@ -27,6 +27,16 @@ namespace Password_Manager.View
         public CreateDbView()
         {
             InitializeComponent();
+            this.Loaded += CreateDbView_Loaded;
+        }
+        private void CreateDbView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+            if (parentWindow != null)
+            {
+                
+                parentWindow.Icon = CreateColoredCircleIcon("#eb6734");
+            }
         }
 
         private void CreateVaultButton_Click(object sender, RoutedEventArgs e)
@@ -44,7 +54,19 @@ namespace Password_Manager.View
 
             ViewModel.CreateDbViewModel.CreateNewVault(vaultName, vaultPassword);
         }
-       private void MyPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        public DrawingImage CreateColoredCircleIcon(string hexColor)
+        {
+            var color = (Color)ColorConverter.ConvertFromString(hexColor);
+
+            return new DrawingImage(
+                new GeometryDrawing(
+                    new SolidColorBrush(color),
+                    null,
+                    new EllipseGeometry(new Point(8, 8), 8, 8)
+                )
+            );
+        }
+        private void MyPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             var passwordBox = sender as System.Windows.Controls.PasswordBox;
             string currentPassword = passwordBox.Password;
@@ -63,4 +85,4 @@ namespace Password_Manager.View
         
     }
 
-}
+

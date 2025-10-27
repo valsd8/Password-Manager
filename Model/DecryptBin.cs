@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Password_Manager.Model
+namespace PasswordManager.Model
 {
     public class DecryptBin
     {
@@ -29,7 +29,7 @@ namespace Password_Manager.Model
         {
             byte[] decryptedBytes = null;
 
-            // Set up the encryption objects
+            
             using (Aes aes = Aes.Create())
             {
                 aes.Key = key;
@@ -37,7 +37,7 @@ namespace Password_Manager.Model
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
 
-                // Decrypt the input ciphertext using the AES algorithm
+                
                 using (ICryptoTransform decryptor = aes.CreateDecryptor())
                 {
                     decryptedBytes = decryptor.TransformFinalBlock(cipher, 0, cipher.Length);

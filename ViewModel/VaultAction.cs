@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Password_Manager.Model;
+using PasswordManager.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Xml.Linq;
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
     public class VaultAction : INotifyPropertyChanged
     {

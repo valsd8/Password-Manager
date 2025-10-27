@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Password_Manager;
-using Password_Manager.Model;
-using Password_Manager.View;
+using PasswordManager;
+using PasswordManager.Model;
+using PasswordManager.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
     public class DisplayData
     {

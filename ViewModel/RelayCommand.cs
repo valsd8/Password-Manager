@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System;
 using System.Windows.Input;
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
 
 

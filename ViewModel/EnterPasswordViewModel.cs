@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Password_Manager.Model;
-using Password_Manager.View;
+using PasswordManager.Model;
+using PasswordManager.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +19,7 @@ using System.Windows.Navigation;
 
 
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
 
 
@@ -91,11 +91,11 @@ namespace Password_Manager.ViewModel
                             //return;
                         }
 
-                        // Optional: You can check if the vault has any entries
+                        
                         if (decryptedData.Entries == null || decryptedData.Entries.Any(e => string.IsNullOrEmpty(e.Password)))
                         {
                             MyText = "Vault is empty. No credentials saved yet.";
-                            // You could still allow navigation if you want:
+                            
                              _navigate?.Invoke(new VaultAction());
                             return;
                         }

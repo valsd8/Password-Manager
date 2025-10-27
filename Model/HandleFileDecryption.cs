@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Password_Manager.Model
+namespace PasswordManager.Model
 {
     public class HandleFileDecryption
     {
@@ -25,14 +25,14 @@ namespace Password_Manager.Model
             EncryptedPackage encryptedPackage = JsonConvert.DeserializeObject<EncryptedPackage>(json);
             if (string.IsNullOrWhiteSpace(encryptedPackage?.EncryptedData))
             {
-                return null; // Caller should handle this appropriately
+                return null;
             }
             byte[] iv = Convert.FromBase64String(encryptedPackage.IV);
             byte[] cipher = Convert.FromBase64String(encryptedPackage.EncryptedData);
             byte[] salt = Convert.FromBase64String(encryptedPackage.Salt);
 
             byte[] key = HandleFileEncryption.DeriveKey(password, salt);
-            App.SharedData.aesKey = key;// Assume Encrypt is a static class handling key derivation
+            App.SharedData.aesKey = key;
 
             byte[] decryptedBytes = DecryptBin.DecryptData(cipher, key, iv);
             if (decryptedBytes == null || decryptedBytes.Length == 0)

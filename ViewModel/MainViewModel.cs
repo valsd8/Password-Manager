@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace Password_Manager.ViewModel
+namespace PasswordManager.ViewModel
 {
 
 

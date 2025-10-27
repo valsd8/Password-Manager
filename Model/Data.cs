@@ -5,7 +5,7 @@ using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Password_Manager.Model
+namespace PasswordManager.Model
 {
     public class Data
     {

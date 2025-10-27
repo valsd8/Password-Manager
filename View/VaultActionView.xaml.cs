@@ -1,6 +1,6 @@
 ﻿using Password_Manager;
-using Password_Manager.Model;
-using Password_Manager.ViewModel;
+using PasswordManager.Model;
+using PasswordManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Password_Manager.View
+namespace PasswordManager.View
 {
     /// <summary>
     /// Logique d'interaction pour VaultAction.xaml
@@ -29,6 +29,7 @@ namespace Password_Manager.View
             InitializeComponent();
             StaticVaultListView = VaultListView;
             this.Loaded += VaultAction_Loaded;
+            this.SizeChanged += VaultListView_SizeChanged;
             DisplayData data = new DisplayData();
             data.displayData(VaultListView);
         }
@@ -40,10 +41,24 @@ namespace Password_Manager.View
             {
                 var VaultAction = new ViewModel.VaultAction();
                 parentWindow.Title = VaultAction.SetWindowsTitle();
+                
+                parentWindow.Icon = CreateColoredCircleIcon("#2196F3");
             }
         }
+        public DrawingImage CreateColoredCircleIcon(string hexColor)
+        {
+            var color = (Color)ColorConverter.ConvertFromString(hexColor);
 
-        
+            return new DrawingImage(
+                new GeometryDrawing(
+                    new SolidColorBrush(color),
+                    null,
+                    new EllipseGeometry(new Point(8, 8), 8, 8)
+                )
+            );
+        }
+
+
 
         public void Add_entry_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -93,12 +108,7 @@ namespace Password_Manager.View
             //double totalWidth = VaultListView.ActualWidth - 35; // subtract a little for scrollbar & margin
 
             //if (VaultGridView.Columns.Count >= 4)
-            {
-                //VaultGridView.Columns[0].Width = totalWidth * 0.25; // 25%
-                //VaultGridView.Columns[1].Width = totalWidth * 0.25; // 25%
-                //VaultGridView.Columns[2].Width = totalWidth * 0.20; // 20%
-                //VaultGridView.Columns[3].Width = totalWidth * 0.30; // 30%
-            }
+            VaultListView.Width = this.ActualWidth - 40;
         }
 
     }

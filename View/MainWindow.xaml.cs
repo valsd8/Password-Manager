@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
 
-namespace Password_Manager.View
+namespace PasswordManager.View
 {
     public partial class MainWindow : Window // Same name: MainWindows
     {

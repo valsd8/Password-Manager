@@ -1,9 +1,9 @@
-﻿using Password_Manager.ViewModel;
+﻿using PasswordManager.ViewModel;
 using System.Configuration;
 using System.Data;
 using System.Windows;
 
-namespace Password_Manager
+namespace PasswordManager
 {
     /// <summary>
     /// Interaction logic for App.xaml
