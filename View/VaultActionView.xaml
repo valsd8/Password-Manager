@@ -17,10 +17,23 @@
     <UserControl.Resources>
     </UserControl.Resources>
 
-
+    
 
 
     <Grid Margin="20">
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Copy URL" Click="CopyUrl_Click" 
+              Tag="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+                <MenuItem Header="Copy Email" Click="CopyEmail_Click" 
+              Tag="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+                <MenuItem Header="Copy Password" Click="CopyPassword_Click" 
+              Tag="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+                <Separator/>
+                <MenuItem Header="Delete" Click="DeleteBtn_Click" 
+              Tag="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -28,51 +41,80 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-       
-        <TextBlock Text="Vault Entries" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
 
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Vault Entries" 
+               FontSize="20" 
+               FontWeight="Bold" 
+               VerticalAlignment="Bottom"
+               Margin="0,0,10,0"/>
+            <TextBlock Text="(Right click on each row to copy element)" 
+               FontSize="15" 
+               Foreground="Gray"
+               VerticalAlignment="Bottom"
+               Margin="0,0,0,2"/>
+        </StackPanel>
         <ListView x:Name="VaultListView" Grid.Row="1"
-                  HorizontalContentAlignment="Stretch"
+          HorizontalContentAlignment="Stretch"
+                  ContextMenu="{x:Null}"
           ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border x:Name="border"
+                                CornerRadius="8" 
+                                Margin="1,1,1,1">
+                                    <ContentPresenter/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#F5F5F5"/>
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#2196F3"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#E3F2FD"/>
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#2196F3"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <EventSetter Event="Loaded" Handler="ListViewItem_Loaded"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ListView.Resources>
             <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                
-                                <ColumnDefinition Width="*"/>
-                                
-                                <ColumnDefinition Width="*"/>
-                                
-                                <ColumnDefinition Width="*"/>
-                                
-                                <ColumnDefinition Width="*"/>
-                                
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="{Binding Url}" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="1" Text="{Binding Email}" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="2" Text="{Binding Password}" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="3" Text="{Binding OptionalComment}" VerticalAlignment="Center" />
-
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Url}" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{Binding Email}" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="2" Text="{Binding Password}" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="3" Text="{Binding OptionalComment}" VerticalAlignment="Center" />
                         <Button Grid.Column="4" Content="🗑️" 
-                Background="#db1a51"
-                Margin="0"
-                                    Width="40"
-                Padding="0"
-                Click="DeleteBtn_Click"
-                                    Style="{StaticResource ModernButtonStyle}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        
-        
+                        Background="#db1a51"
+                        Margin="0"
+                        Width="40"
+                        Padding="0"
+                        Click="DeleteBtn_Click"
+                        Style="{StaticResource ModernButtonStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,10,0,0">
           
             <Grid Margin="0,0,0,5">

@@ -58,8 +58,6 @@ namespace PasswordManager.ViewModel
             BreachWarningDialog.Show(message);
             Console.WriteLine();
 
-            // Rate limiting (be nice to the API)
-            await Task.Delay(500);
 
         }
         public static string GetPasswordStrengthMessage(int breachCount, string website, string password)

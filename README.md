@@ -22,6 +22,7 @@ All data is written to a file named `encrypted.bin`, which contains a **JSON-ser
 ```
 
 
+
 ![App GUI](Images/appGUI.png)
 
 # 

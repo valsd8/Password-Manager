@@ -72,6 +72,11 @@ namespace PasswordManager.View
             string currentPassword = passwordBox.Password;
             PasswordChecker PasswordChecker = new Model.PasswordChecker();
             string passwordStrength = PasswordChecker.checkPasswordStrength(currentPassword);
+            
+
+            DisplayBreachedPassword(currentPassword);
+            if (currentPassword == "")
+                ShowPawnedPassword.Text = "";
 
             if (passwordStrength == "password invalid")
                 ShowPasswordStrenght.Text = "";
@@ -106,9 +111,31 @@ namespace PasswordManager.View
                 ShowPasswordStrenght.Text = passwordStrength;
 
         }
+        public async void DisplayBreachedPassword(string password)
+        {
+            Console.WriteLine($"Checking: {new string('*', password.Length)}");
 
-        
+            if (string.IsNullOrEmpty(password))
+            {
+                ShowPawnedPassword.Text = "";
+                return;
+            }
+
+            int breachCount = await Pawned.CheckPasswordAsync(password);
+
+            if (breachCount > 0)
+            {
+                ShowPawnedPassword.Text = $"Please dont use this password. It has been found in {breachCount} data breaches.";
+            }
+            else
+            {
+                ShowPawnedPassword.Text = ""; 
+            }
         }
+
+
+
+    }
 
         
     }
