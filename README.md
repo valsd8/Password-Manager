@@ -20,10 +20,16 @@ All data is written to a file named `encrypted.bin`, which contains a **JSON-ser
   "EncryptedData": "2svei9tV29wcx5lRzBJ+AKBnRu/QVLxrFSObm1Ek9AI="
 }
 ```
+## Features
 
+- **Full Password Management** - Create, view, copy, and delete password entries with ease
+- **One-Click Copy** - Right-click any entry to instantly copy URL, email, password, or comments to clipboard
+- **Breach Detection** - Automatic warnings when passwords are found in known data breaches
+- **Security Insights** - View how many times a password has appeared in compromised databases
 
+![Password Management](Images/Copy.png)
+*Quick access to all your credentials with right-click context menu*
 
-![App GUI](Images/appGUI.png)
-
-# 
+![Breach Detection](Images/PasswordBreach.png)
+*Real-time alerts for compromised passwords*
 
